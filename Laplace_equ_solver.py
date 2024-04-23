@@ -196,10 +196,17 @@ class laplace_equ():
 
 
 if __name__ == '__main__':
+
+    ti.init(arch=ti.gpu)
+    # a = laplace_equ([5,5,5],1,[0.1,0.1,0.1],[4,0,0],[0,0,0])
+    # a.exe_dim1_solver()
+    a = laplace_equ([10,5,5],1,[0.1,0.1,0.1],[5,0,0],[10,0,0])
+
     ti.init(arch=ti.cpu)
     # a = laplace_equ([5,5,5],1,[0.1,0.1,0.1],[4,0,0],[0,0,0])
     # a.exe_dim1_solver()
     a = laplace_equ([10,10,10],2,[0.1,0.1,0.1],[0,0,0],[5,5,5])
+
     a.exe_dim2_solver()
     # a = laplace_equ([10,5,5],1,[0.1,0.1,0.1],[5,10,0],[5,0,5])
     # a.exe_dim3_solver()

@@ -297,6 +297,11 @@ class height_equ():
         max_value = max(data_ti.to_numpy().flatten())  # 提前计算最大值以提高效率
 
         for t in range(time_points):
+<<<<<<< HEAD
+            if t == 100:
+                break
+=======
+>>>>>>> b847bb8b2be910bde0f6aea8e589dce5a393d6b1
             pos = []
             for i in range(len_points):
                 # 假设 data_ti 中存储的y值需要被适当缩放和位移以适配GUI的显示范围

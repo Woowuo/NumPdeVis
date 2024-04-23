@@ -3,6 +3,9 @@ import taichi as ti
 import numpy as np
 import wave_equ_solver as wa
 import height_equ_solver as he
+import Record as re
+import subprocess
+
 
 ti.init(arch=ti.gpu)
 model = 12
@@ -10,6 +13,8 @@ if model == 11:
     a = wa.wave_equ("\sinx", "\cosx", [10, 5, 5], 1, 0.1, [0.05, 0.1, 0.1, 0.1], [0, 0, 0], [0, 0, 0], 100)
     a.load_data_dim1()
     a.draw_dim1()
+    subprocess.run(['python', 'Record.py'], check=True)
+
 if model == 12:
     a = wa.wave_equ("\sinx", "\sinx", [10, 5, 5], 2, 0.1, [0.1, 0.1, 0.1, 0.1], [0, 0, 0], [0, 0, 0], 100)
     a.load_data_dim2()
@@ -76,6 +81,9 @@ if model == 12:
     t = 0
 
     while window.running:
+        if t == 100:
+            break
+
         t = t + 1
         update_wave(t)
 
@@ -96,6 +104,8 @@ if model == 12:
         canvas.scene(scene)
         window.save_image(str(t)+'.png')
         window.show()
+    subprocess.run(['python', 'Record.py'], check=True)
+
 if model == 21:
     a = he.height_equ("3\sinx",[10,5,5],1,0.1,[0.01,0.1,0.1,0.1],[0,0,0],[0,0,0],11)
     a.load_data_dim1()
@@ -155,7 +165,9 @@ if model == 22:
             particles_color[idx] = colors[i, j]
 
 
+    window = ti.ui.Window('2D  Equation', (800, 800),show_window=True)
     window = ti.ui.Window('2D  Equation', (800, 800),show_window=False)
+
     canvas = window.get_canvas()
     canvas.set_background_color((1, 1, 1))
     scene = window.get_scene()

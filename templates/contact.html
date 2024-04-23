@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>contact</title>
+</head>
+    
+<body>
+    <header>
+		
+		<div class="logo-tittle">
+               <div class="logo">
+                  <a href="{{ url_for('index') }}"><img src="/static/logo.png" alt="Logo" style="height: 70px;"> <!-- 调整高度以适应你的布局需求 --></a>
+               </div>
+		       <div class="logo-text"><a href="{{ url_for('index') }}">NumPdeVis</a></div>
+            </div>
+		
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <br>
+        <h1>This is our contact page.</h1>
+    </main>
+    
+</body>
+</html>
