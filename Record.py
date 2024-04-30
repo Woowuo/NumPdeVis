@@ -2,9 +2,15 @@ import cv2
 import os
 
 # 图片所在文件夹路径
+
+image_folder = "./"
+# 输出视频的路径
+video_path = './static/output_video.mp4'
+
 image_folder = "/Users/24k2/Desktop/study/intro/2402/软件项目管理/NumPdeVis/NumPdeVis"
 # 输出视频的路径
 video_path = 'output_video.mp4'
+
 # 视频的帧率
 fps = 24
 
