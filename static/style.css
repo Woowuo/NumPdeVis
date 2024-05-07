@@ -1,0 +1,311 @@
+/* style.css */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 确保内边距不影响宽高计算 */
+}
+
+html, body {
+    height: 100%; /* 使body高度填满整个视口 */
+
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* 垂直堆叠元素 */
+}
+
+main {
+    flex: 1; /* 允许main元素填充所有可用空间 */
+}
+
+/* 其他样式保持不变 */
+
+header {
+ 	position: fixed; 
+    background-color: #ffffff;
+    display: flex;
+   justify-content: space-between; 
+    align-items: center;
+    padding: 0px 10%; 
+	width: 80%;
+	border-bottom: 0.5px solid #bcbcbc; /* 2px高的黑色实线 */
+	z-index: 1000;
+}
+
+.content {
+	margin-top: 60px; /* 根据header的高度调整，防止内容被header遮挡 */
+	    padding: 0px;
+}
+
+.logo-tittle {
+	display: flex;
+	
+	align-items: center;
+}
+
+.logo-text a {
+	text-decoration: none;
+	color: #7e7e7e;
+}
+
+
+.logo-text {
+    margin-right: 0px; 
+/*    font-family: STLiti; */
+    font-family:'SnellRoundhand';
+    font-size: 50px; 
+    color: #c11930; 
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.banner {
+    background-color: #f1f1f1;
+    color: black;
+    text-align: center;
+    padding: 50px 10%;
+	marign-top: 60px;
+	height: 300px;
+
+}
+
+.example {
+    background-color: #f1f1f1;
+    color: black;
+    display: flex;
+	justify-content: space-between;
+    padding: 50px 10%;
+}
+.section2 {
+	text-align: center;
+	font-family:'VisbyRoundCF-Bold';
+	background-color: #ffffff;
+	color: black;
+	justify-content: space-between;
+	padding: 50px 10%;
+	height: 600px;
+}
+.section3 {
+	background-color: #f1f1f1;
+	color: black;
+	padding: 10%;
+	height: 350px;
+	padding-top: 30px;
+	
+	position: relative;
+	    padding-top: 100px;  /* 根据您的固定头部高度调整 */
+	    margin-top: -70px;  /* 与 padding-top 相等但为负值 */
+	    display: block;     /* 确保 div 可以正确显示 */
+}
+.laplace {
+    background-color: #ffffff;
+    color: black;
+    /* display: flex; */
+	/* justify-content: space-between; */ 
+    padding: 10%;
+	height: 450px;
+/*    padding-top: 30px; */
+	
+	position: relative;
+	    padding-top: 100px;  /* 根据您的固定头部高度调整 */
+	    margin-top: -70px;  /* 与 padding-top 相等但为负值 */
+	    display: block;     /* 确保 div 可以正确显示 */
+}
+
+.information {
+	
+    justify-content: space-around;
+	background-color: #ffffff;
+    padding: 20px 10%;
+	display: flex;
+}
+
+.information1 {
+font-family:'VisbyRoundCF-Bold';
+
+	font-size: 50px;
+}
+
+.information2 {
+  font-family: Garamond, serif;
+/*   font-family:'VisbyRoundCF-Bold'; */
+	font-size: x-large;
+	color: #707070;
+}
+
+.information-item {
+    flex-basis: 70%;
+/*    background-color: #ffffff; */
+    padding: 20px;
+	font-size: x-large;
+/*    box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.video-container {
+    width: 300px; /* 容器的固定宽度 */
+    height: 300px; /* 容器的固定高度 */
+    overflow: hidden; /* 隐藏超出容器大小的视频部分 */
+    position: relative; /* 设置相对定位，作为视频绝对定位的参照 */
+	margin-top: 50px;
+}
+
+
+.video-container2 {
+    width: 300px; /* 容器的固定宽度 */
+    height: 300px; /* 容器的固定高度 */
+    overflow: hidden; /* 隐藏超出容器大小的视频部分 */
+	 position: relative; /* 设置相对定位，作为视频绝对定位的参照 */
+/* 	 left: 1000px; */
+	margin-top: 50px;
+}
+
+.video-container2 video {
+    width: 100%; /* 让视频宽度100%填充容器 */
+    height: 100%; /* 高度也是100% */
+    object-fit: contain; /* 更改这里为 contain 或 cover 根据需要 */
+}
+
+.video-container3 {
+    width: 300px; /* 容器的固定宽度 */
+    height: 300px; /* 容器的固定高度 */
+    overflow: hidden; /* 隐藏超出容器大小的视频部分 */
+	 position: relative; /* 设置相对定位，作为视频绝对定位的参照 */
+/* 	 left: 600px; */
+	margin-top: 50px;
+}
+.video-container3 video {
+    width: 100%; /* 让视频宽度100%填充容器 */
+    height: 100%; /* 高度也是100% */
+    object-fit: contain; /* 更改这里为 contain 或 cover 根据需要 */
+}
+.background-video {
+    position: absolute; /* 绝对定位 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 居中视频 */
+    min-width: 100%; 
+    min-height: 100%;
+}
+.button {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: #6A5ACD;
+        border: none;
+        border-radius: 50px;
+        box-shadow: none;
+        transition: all 0.3s;
+		text-decoration: none; /* 去除下划线 */
+    }
+
+    .button:hover { background-color: #483D8B }
+
+    .button:active {
+        background-color: #483D8B;
+        box-shadow: none;
+        transform: translateY(4px);
+    }
+
+    .button-outline {
+        color: #6A5ACD;
+        background-color: transparent;
+        border: 2px solid #6A5ACD;
+    }
+
+    .button-outline:hover {
+        background-color: #6A5ACD;
+        color: #fff;
+    }
+
+.data-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.input-field {
+    padding: 7px;
+    margin-right: 4px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+	width: 40px;
+}
+
+.input-field:focus {
+    border-color: #7a9fbd;
+    outline: none;
+}
+
+.solve-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #7a9fbd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.solve-button:hover {
+    background-color: #6594b5;
+}
+
+
+.text-horizontal {
+	display: flex;
+	text-align: center;
+	
+}
+
+/* 在style.css中添加或更新这些样式 */
+.formula-options button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f9f9f9; /* 浅灰色背景 */
+    border: 1px solid #ddd; /* 边框 */
+    cursor: pointer; /* 鼠标样式 */
+    outline: none; /* 移除焦点时的边框 */
+}
+
+.formula-options button:hover {
+    background-color: #e9e9e9; /* 鼠标悬停时的背景色 */
+}
+
+.formula-options button.selected {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* 选中时的阴影 */
+    background-color: #e0e0e0; /* 选中时的背景色 */
+}
+
+.bracket {
+	font-size: 25px;
+	
+}
