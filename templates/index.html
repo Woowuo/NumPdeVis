@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>NumPdeVis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+	<link href='http://cdn.repository.webfont.com/webfonts/nomal/154120/46931/661ba89aa75bea15a0a6d4c1.css' rel='stylesheet' type='text/css' />
+	<link href='http://cdn.repository.webfont.com/webfonts/nomal/154120/47019/66387592a75bea188c0da69c.css' rel='stylesheet' type='text/css' />
+	<script>
+	    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+	</script>
+	<script src='https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+		
+		<div class="logo-tittle">
+               <div class="logo">
+                  <a href="{{ url_for('index') }}"><img src="/static/logo.png" alt="Logo" style="height: 70px;"> <!-- 调整高度以适应你的布局需求 --></a>
+               </div>
+		       <div class="logo-text"><a href="{{ url_for('index') }}">NumPdeVis</a></div>
+            </div>
+		
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+				<li><a href="{{ url_for('login') }}">Login</a></li>
+				<li><a href="">Full function</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+<!--        <section class="banner">
+            <h1>NumPdeVis can support Latex on html now!</h1><br>
+				<p>Infinite Series: $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$</p><br>
+			<p>Integral Formula: $\int_a^b f(x)\,dx = F(b) - F(a)$</p><br>
+			<p>Euler's Formula: $e^{i\pi} + 1 = 0$</p>
+			    
+			    <div class=data-form>
+			        <p>Test:</p>
+			        <input type="text" id="userInput" placeholder="请以latex语法输入...">
+                    <button onclick="printInput()">转换</button>
+			    </div>
+			<p id="display"></p>
+			    
+        </section> -->
+		
+		<section style="marign-top: 60px; background-color: #ffffff;">
+			<br><br><br>
+		</section>
+        <section class="information">
+            
+            <div class="information-item">
+				<h1 class="information1">Numeric Visualization of Partial Derivative Equation</h1>
+				<p class="information2" margin-top: 5px;>NumPdeVis is a scientific computing software meticulously developed by the Woohuo team, 
+				                                         designed to provide researchers with exceptional computational and visualization solutions. 
+														 It can accurately solve various complex partial differential equations and present the results in a highly intuitive manner.<br><br></p>
+				<a href="#Visual calculations" class="button">Visual calculations</a>
+				<a href="#Basic calculations" class="button button-outline">Basic calculations</a>
+            </div>
+			<div class="video-container">
+	
+			        <video autoplay loop muted class="background-video">
+			            <source src="/static/videos/julia_set.mp4" type="video/mp4">
+			            Your browser does not support the video tag.
+			        </video>
+			</div>
+
+        </section>
+		
+		<section class=banner>
+			<h1>NumPdeVis can support Latex on html now!</h1><br>
+				<p>Infinite Series: $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$</p><br>
+			<p>Integral Formula: $\int_a^b f(x)\,dx = F(b) - F(a)$</p><br>
+			<p>Euler's Formula: $e^{i\pi} + 1 = 0$</p>
+			    
+			    <div class=data-form>
+			        <!-- <p>Test:</p> -->
+			        <input type="text" id="userInput" placeholder="                        Pleases input by latex..." style="width: 300px;">
+			        <button onclick="printInput()">Transfer</button>
+			    </div>
+			<p id="display"></p>
+		</section>
+		
+		<section class="section2">
+			<div>
+				<h1 style="font-size: 50px; ">What we offer</h1>
+			</div>
+			<div style="display: flex;">
+			<div style=" margin-left: 1px;">
+				<h2 style="font-size: 20px; ">Visual calculation of <br>Wave Equation</h2>
+				<div class="video-container2">
+				        <video autoplay loop muted class="background-video">
+				            <source src="/static/videos/video_wave_example.mp4" type="video/mp4">
+				            Your browser does not support the video tag.
+				        </video>
+				</div>
+			</div>
+			<div style=" margin-left: 100px;">
+				<h2 style="font-size: 20px; ">Visual calculation of <br>Laplace Equation</h2>
+				<img src="./static/laplace.png" width="500" height="350">
+
+			</div>
+            <div style="margin-left: 160px;">
+				<h2 style="font-size: 20px; ">Visual calculation of Heat Conduction Equation</h2>
+			
+			<div class="video-container2">
+			        <video autoplay loop muted class="background-video">
+			            <source src="/static/videos/video_heat_example.mp4" type="video/mp4">
+			            Your browser does not support the video tag.
+			        </video>
+			</div>
+			</div>
+			</div>
+
+		</section>
+		
+		<section id="Basic calculations" class="section3">
+			<div class="formula-options">
+			    <button id="btn-D" onclick="switchFormula2('D')">Solve integral equation</button>
+			    <button id="btn-E" onclick="switchFormula2('E')">Solve matrix</button>
+			    <button id="btn-F" onclick="switchFormula2('F')">Solve non equation</button>
+				<button id="btn-G" onclick="switchFormula2('G')">Solve nonlinear equation</button>
+				<button id="btn-H" onclick="switchFormula2('H')">Find extreme</button>
+				<button id="btn-I" onclick="switchFormula2('I')">Solve linear system equations</button>
+<!-- 				<button id="btn-J" onclick="switchFormula2('J')">Draw function diagram</button> -->
+			</div>
+			<br><br>
+			<form id="solve_integral" class="dataform">
+				<input type="text" name="parameter_integral" placeholder="parameter_integral..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+
+			
+	
+			<div id="result_integral" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+	
+			<form id="solve_matrix" class="dataform">
+				<input type="text" name="parameter_matrix" placeholder="parameter_matrix..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_matrix" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+			
+			<form id="solve_non_equations" class="dataform">
+				<input type="text" name="parameter_non_equations" placeholder="parameter_non_equations..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_non_equations" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+			
+			<form id="solve_nonlinear_equation" class="dataform">
+				<input type="text" name="parameter_nonlinear_equation" placeholder="parameter_nonlinear_equation..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_nonlinear_equation" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+			
+			<form id="solve_find_extreme" class="dataform">
+				<input type="text" name="parameter_find_extreme" placeholder="parameter_find_extreme..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_find_extreme" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+			
+			<form id="solve_linear_system" class="dataform">
+				<input type="text" name="parameter1_linear_system" placeholder="parameter1_linear_system..." class="input-field" style="width: 500px;">
+				<input type="text" name="parameter2_linear_system" placeholder="parameter2_linear_system..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_linear_system" style="margin-top: 20px; font-size: 40px;" class="result_area"></div>
+			
+			<!-- <form id="plot_from_latex_multiple" class="dataform">
+				<input type="text" name="parameter_plot_from_latex_multiple" placeholder="parameter_draw_function_diagram..." class="input-field" style="width: 500px;">
+				<button type="submit" class="solve-button">Solve</button>
+			</form>
+			<div id="result_plot_from_latex_multiple" style="margin-left: 250px; width: 40%; margin-top: 20px;" class="result_area">
+			    
+				{{ plot_div|safe }}
+			</div> -->
+		</section>
+		
+
+		
+		
+		<section id="Visual calculations" class="laplace">
+			<div class="formula-options">
+				<button id="btn-A" onclick="switchFormula('A')">Wave Equation</button>
+				<button id="btn-B" onclick="switchFormula('B')">Heat Conduction Equation</button>
+				<button id="btn-C" onclick="switchFormula('C')">Laplace Equation</button>
+<!-- 				<button id="reset-taichi">重置 Taichi 环境</button> -->
+
+
+				
+				
+			</div>
+			
+			
+			
+			<br>
+			    <!-- 现有的单输入框表单，用于Wave Equation和Heat Conduction Equation -->
+			    <form id="heatForm" class="dataform">
+			        <input type="text" name="con" placeholder="\sinx" class="input-field">
+			        
+			        
+			        <span class="bracket">[</span>
+			        <input type="text" name="len_1" placeholder="Len" class="input-field">, 
+			        <input type="text" name="len_2" placeholder="Len" class="input-field">, 
+			        <input type="text" name="len_3" placeholder="Len" class="input-field">
+			        <span class="bracket">]</span>
+			        
+			        <span class="bracket">[</span>
+			        <input type="text" name="dw1" placeholder="dt" class="input-field">, 
+			        <input type="text" name="dw2" placeholder="dx" class="input-field">, 
+			        <input type="text" name="dw3" placeholder="dy" class="input-field">,
+			        <input type="text" name="dw4" placeholder="dz" class="input-field">
+			        <span class="bracket">]</span>
+					<br>
+					<input type="text" name="dim" placeholder="Dim" class="input-field">
+			        <span class="bracket">[</span>
+			        <input type="text" name="a1" placeholder="a1" class="input-field">, 
+			        <input type="text" name="a2" placeholder="a2" class="input-field">, 
+			        <input type="text" name="a3" placeholder="a3" class="input-field">
+			        <span class="bracket">]</span>
+			        <span class="bracket">[</span>
+			        <input type="text" name="b1" placeholder="b1" class="input-field">, 
+			        <input type="text" name="b2" placeholder="b2" class="input-field">, 
+			        <input type="text" name="b3" placeholder="b3" class="input-field">
+			        <span class="bracket">]</span>
+			        <input type="text" name="v" placeholder="Velocity" class="input-field">
+					<br><br>
+			        <button type="submit" class="solve-button">Solve</button>
+			    </form>
+				
+				<form id="waveForm" style="display:none;">
+					<input type="text" name="con1" placeholder="\sinx" class="input-field">
+					<input type="text" name="con2" placeholder="\cosx" class="input-field">
+					
+					
+					<span class="bracket">[</span>
+				    <input type="text" name="len_1" placeholder="Len" class="input-field">, 
+					<input type="text" name="len_2" placeholder="Len" class="input-field">, 
+					<input type="text" name="len_3" placeholder="Len" class="input-field">
+					<span class="bracket">]</span>
+				    
+					<span class="bracket">[</span>
+				    <input type="text" name="dw1" placeholder="dt" class="input-field">, 
+					<input type="text" name="dw2" placeholder="dx" class="input-field">, 
+					<input type="text" name="dw3" placeholder="dy" class="input-field">,
+					<input type="text" name="dw4" placeholder="dz" class="input-field">
+					<span class="bracket">]</span>
+					<br>
+					<input type="text" name="dim" placeholder="Dim" class="input-field">
+					<span class="bracket" style="margin-left:66px;">[</span>
+				    <input type="text" name="a1" placeholder="a1" class="input-field">, 
+					<input type="text" name="a2" placeholder="a2" class="input-field">, 
+					<input type="text" name="a3" placeholder="a3" class="input-field">
+					<span class="bracket">]</span>
+					<span class="bracket">[</span>
+				    <input type="text" name="b1" placeholder="b1" class="input-field">, 
+					<input type="text" name="b2" placeholder="b2" class="input-field">, 
+					<input type="text" name="b3" placeholder="b3" class="input-field">
+					<span class="bracket">]</span>
+					<input type="text" name="v" placeholder="Velocity" class="input-field">
+					<br><br>
+				    <button type="submit" class="solve-button">Solve</button>
+				</form>
+			    
+			    <!-- 新的五输入框表单，仅用于Laplace Equation -->
+			    <form id="laplaceForm" class="dataform laplace-inputs" style="display:none;">
+					<input type="text" name="dim" placeholder="Dim" class="input-field">
+					<span class="bracket">[</span>
+			        <input type="text" name="len_1" placeholder="Len" class="input-field">, 
+					<input type="text" name="len_2" placeholder="Len" class="input-field">, 
+					<input type="text" name="len_3" placeholder="Len" class="input-field">
+					<span class="bracket">]</span>
+			        
+					<span class="bracket">[</span>
+			        <input type="text" name="dw1" placeholder="dt" class="input-field">, 
+					<input type="text" name="dw2" placeholder="dx" class="input-field">, 
+					<input type="text" name="dw3" placeholder="dy" class="input-field">
+					<span class="bracket">]</span>
+					<br>
+					<span class="bracket" style="margin-left:66px;">[</span>
+			        <input type="text" name="a1" placeholder="a1." class="input-field">, 
+					<input type="text" name="a2" placeholder="a2." class="input-field">, 
+					<input type="text" name="a3" placeholder="a3." class="input-field">
+					<span class="bracket">]</span>
+					<span class="bracket">[</span>
+			        <input type="text" name="b1" placeholder="b1" class="input-field">, 
+					<input type="text" name="b2" placeholder="b2" class="input-field">, 
+					<input type="text" name="b3" placeholder="b3" class="input-field">
+					<span class="bracket">]</span>
+					<br><br>
+			        <button type="submit" class="solve-button">Solve</button>
+			    </form>
+<!--                <div class="image-frame">
+			           <img id="resultImage" src="" alt="Result will be shown here" style="display:none;">
+			    </div> -->
+				<div id=videoContainer>
+				    <video id="videoPlayer" width="480" height="360" controls  style="margin-left: 850px; margin-top: -180px;">
+				          Your browser does not support the video tag.
+				    </video>
+				</div>
+				<div id="plotDivContainer" style="margin-left: 550px; width: 40%; margin-top: -230px;">
+				    
+					{{ plot_div|safe }}
+				</div>
+				
+			    <script>
+					
+
+
+
+					
+				    // document.getElementById('reset-taichi').addEventListener('click', function() {
+				    //     fetch('/reset-taichi', { method: 'POST' })
+				    //     .then(response => response.json())
+				    //     .then(data => {
+				    //         if (data.success) {
+				    //             alert('Taichi 环境已重置！');
+				    //         } else {
+				    //             alert('重置失败: ' + data.error);
+				    //         }
+				    //     })
+				    //     .catch(error => {
+				    //         console.error('Error:', error);
+				    //         alert('重置请求失败');
+				    //     });
+				    // });
+
+
+                    function switchFormula(formula) {
+                        // 移除所有按钮的'selected'类
+                        document.querySelectorAll('.formula-options button').forEach(function(btn) {
+                            btn.classList.remove('selected');
+                        });
+                    
+                        // 添加'selected'类到点击的按钮
+                        document.getElementById('btn-' + formula).classList.add('selected');
+                    
+                        // 隐藏所有表单
+                        document.getElementById('waveForm').style.display = 'none';
+                        document.getElementById('heatForm').style.display = 'none';
+                        document.getElementById('laplaceForm').style.display = 'none';
+                    
+                        // 清空结果显示区域
+                        var videoPlayer = document.getElementById("videoPlayer");
+                        var plotDivContainer = document.getElementById("plotDivContainer");
+                        videoPlayer.removeAttribute("src"); // 清除视频源
+                        videoPlayer.load(); // 重新加载视频元素
+                        plotDivContainer.innerHTML = ''; // 清空图表容器
+                    
+                        // 根据选择的方程显示表单和控制视频播放器的显示
+                        if (formula === 'C') { // 如果选中的是Laplace方程
+                            document.getElementById('laplaceForm').style.display = 'block';
+                            videoPlayer.style.display = 'none'; // 隐藏视频播放器
+                        } else {
+                            if (formula === 'A') { // 如果选中的是Wave方程
+                                document.getElementById('waveForm').style.display = 'block';
+                            } else if (formula === 'B') { // 如果选中的是Heat Conduction方程
+                                document.getElementById('heatForm').style.display = 'block';
+                            }
+                            videoPlayer.style.display = 'block'; // 显示视频播放器
+                        }
+                    }
+                    
+					function switchFormula2(formulaType) {
+						
+					    // Hide all forms and result areas first
+					    document.querySelectorAll('.dataform').forEach(function(form) {
+					        form.style.display = 'none';
+					    });
+					    document.querySelectorAll('.result_area').forEach(function(result) {
+					        result.style.display = 'none';
+							result.innerHTML = '';  // 清空所有结果区域的内容
+					    });
+					
+					    // Show selected form and clear previous results
+					     switch(formulaType) {
+					            case 'D':
+					                document.getElementById('solve_integral').style.display = 'block';
+					                document.getElementById('result_integral').style.display = 'block';
+					                break;
+					            case 'E':
+					                document.getElementById('solve_matrix').style.display = 'block';
+					                document.getElementById('result_matrix').style.display = 'block';
+					                break;
+					            case 'F':
+					                document.getElementById('solve_non_equations').style.display = 'block';
+					                document.getElementById('result_non_equations').style.display = 'block';
+					                break;
+					            case 'G':
+					                document.getElementById('solve_nonlinear_equation').style.display = 'block';
+					                document.getElementById('result_nonlinear_equation').style.display = 'block';
+					                break;
+					            case 'H':
+					                document.getElementById('solve_find_extreme').style.display = 'block';
+					                document.getElementById('result_find_extreme').style.display = 'block';
+					                break;
+					            case 'I':
+					                document.getElementById('solve_linear_system').style.display = 'block';
+					                document.getElementById('result_linear_system').style.display = 'block';
+					                break;
+					        }
+					}
+                    // 初始化，默认选择第一个方程
+                    switchFormula('A');
+					switchFormula2('D');
+					
+                      $(document).ready(function() {
+                          $('#solve_integral').on('submit', function(event) {
+                              event.preventDefault();
+                              var parameter_integral = $('input[name="parameter_integral"]').val();
+                              $.ajax({
+                                  url: '/solve_integral',
+                                  type: 'POST',
+                                  contentType: 'application/json',
+                                  data: JSON.stringify({ parameter_integral: parameter_integral }),
+                                  success: function(response) {
+                                      var formattedResult = '$' + response.solve_integral_solution + '$';
+                                      $('#result_integral').html(formattedResult);
+                                      MathJax.typesetPromise();
+                                  },
+                                  error: function(xhr) {
+                                      $('#result_integral').text('Error: ' + xhr.responseText);
+                                  }
+                              });
+                          });
+                      });
+					  
+					  $(document).ready(function() {
+					      $('#solve_matrix').on('submit', function(event) {
+					          event.preventDefault();
+					          var parameter_matrix = $('input[name="parameter_matrix"]').val();
+					          $.ajax({
+					              url: '/solve_matrix',
+					              type: 'POST',
+					              contentType: 'application/json',
+					              data: JSON.stringify({ parameter_matrix: parameter_matrix }),
+					              success: function(response) {
+					                  var formattedResult = '$' + response.solve_matrix_solution + '$';
+					                  $('#result_matrix').html(formattedResult);
+					                  MathJax.typesetPromise();
+					              },
+					              error: function(xhr) {
+					                  $('#result_matrix').text('Error: ' + xhr.responseText);
+					              }
+					          });
+					      });
+					  });
+					  
+					  $(document).ready(function() {
+					      $('#solve_non_equations').on('submit', function(event) {
+					          event.preventDefault();
+					          var parameter_non_equations = $('input[name="parameter_non_equations"]').val();
+					          $.ajax({
+					              url: '/solve_non_equations',
+					              type: 'POST',
+					              contentType: 'application/json',
+					              data: JSON.stringify({ parameter_non_equations: parameter_non_equations }),
+					              success: function(response) {
+					                  var formattedResult = '$' + response.solve_non_equations_solution + '$';
+					                  $('#result_non_equations').html(formattedResult);
+					                  MathJax.typesetPromise();
+					              },
+					              error: function(xhr) {
+					                  $('#result_non_equations').text('Error: ' + xhr.responseText);
+					              }
+					          });
+					      });
+					  });
+					  
+					  $(document).ready(function() {
+					      $('#solve_nonlinear_equation').on('submit', function(event) {
+					          event.preventDefault();
+					          var parameter_nonlinear_equation = $('input[name="parameter_nonlinear_equation"]').val();
+					          $.ajax({
+					              url: '/solve_nonlinear_equation',
+					              type: 'POST',
+					              contentType: 'application/json',
+					              data: JSON.stringify({ parameter_nonlinear_equation: parameter_nonlinear_equation }),
+					              success: function(response) {
+					                  var formattedResult = '$' + response.solve_nonlinear_equation_solution + '$';
+					                  $('#result_nonlinear_equation').html(formattedResult);
+					                  MathJax.typesetPromise();
+					              },
+					              error: function(xhr) {
+					                  $('#result_nonlinear_equation').text('Error: ' + xhr.responseText);
+					              }
+					          });
+					      });
+					  });
+					  
+					  $(document).ready(function() {
+					      $('#solve_find_extreme').on('submit', function(event) {
+					          event.preventDefault();
+					          var parameter_find_extreme = $('input[name="parameter_find_extreme"]').val();
+					          $.ajax({
+					              url: '/solve_find_extreme',
+					              type: 'POST',
+					              contentType: 'application/json',
+					              data: JSON.stringify({ parameter_find_extreme: parameter_find_extreme }),
+					              success: function(response) {
+					                  var formattedResult = '$' + response.solve_find_extreme_solution + '$';
+					                  $('#result_find_extreme').html(formattedResult);
+					                  MathJax.typesetPromise();
+					              },
+					              error: function(xhr) {
+					                  $('#result_find_extreme').text('Error: ' + xhr.responseText);
+					              }
+					          });
+					      });
+					  });
+					  
+					  $(document).ready(function() {
+					      $('#solve_linear_system').on('submit', function(event) {
+					          event.preventDefault();
+					          var parameter1_linear_system = $('input[name="parameter1_linear_system"]').val();
+							  var parameter2_linear_system = $('input[name="parameter2_linear_system"]').val();
+							  var requestData = {
+							              parameter1_linear_system: parameter1_linear_system,
+							              parameter2_linear_system: parameter2_linear_system
+							          };
+					          $.ajax({
+					              url: '/solve_linear_system',
+					              type: 'POST',
+					              contentType: 'application/json',
+					              data: JSON.stringify(requestData),
+								  
+					              success: function(response) {
+					                  var formattedResult = '$' + response.solve_linear_system_solution + '$';
+					                  $('#result_linear_system').html(formattedResult);
+					                  MathJax.typesetPromise();
+					              },
+					              error: function(xhr) {
+					                  $('#result_linear_system').text('Error: ' + xhr.responseText);
+					              }
+					          });
+					      });
+					  });
+					  
+					  // $(document).ready(function() {
+					  //     $('#plot_from_latex_multiple').on('submit', function(event) {
+					  //         event.preventDefault();
+					  //         var parameter_plot_from_latex_multiple = $('input[name="parameter_plot_from_latex_multiple"]').val();
+					  //         $.ajax({
+					  //             url: '/plot_from_latex_multiple',
+					  //             type: 'POST',
+					  //             contentType: 'application/json',
+					  //             data: JSON.stringify({ parameter_plot_from_latex_multiple: parameter_plot_from_latex_multiple }),
+					  //             success: function(response) {
+					  //                 $("#result_plot_from_latex_multiple").html(response.plot_from_latex_multiple_solution); // 将plotly图表嵌入页面指定的元素中
+					  //             },
+					  //             error: function(xhr) {
+					  //                 $('#result_plot_from_latex_multiple').text('Error: ' + xhr.responseText);
+					  //             }
+					  //         });
+					  //     });
+					  // });
+
+					   
+                       $(document).ready(function(){
+                           $("#waveForm").submit(function(event){
+                               event.preventDefault(); // 阻止表单默认提交行为
+                               $.ajax({
+                                   type: "POST",
+                                   url: "/wave",
+                                   data: $(this).serialize(),
+                                   success: function(response){
+                                       // 假设 response.video_url 是你的视频文件的新路径
+                                       var newVideoUrl = response.video_wave; // 确保这个变量包含了正确的视频路径
+                                       var videoPlayer = $("#videoPlayer");
+                                       
+                                       videoPlayer.attr("src", newVideoUrl); // 更新视频路径
+                                       videoPlayer[0].load(); // 重新加载视频元素，确保新视频可以播放
+                                       videoPlayer[0].play(); // 自动播放新视频
+                                   }
+                               });
+                           });
+                       });
+					   
+					   $(document).ready(function(){
+					       $("#heatForm").submit(function(event){
+					           event.preventDefault(); // 阻止表单默认提交行为
+					           $.ajax({
+					               type: "POST",
+					               url: "/heat",
+					               data: $(this).serialize(),
+					               success: function(response){
+					                   // 假设 response.video_url 是你的视频文件的新路径
+					                   var newVideoUrl = response.video_heat; // 确保这个变量包含了正确的视频路径
+					                   var videoPlayer = $("#videoPlayer");
+					                   
+					                   videoPlayer.attr("src", newVideoUrl); // 更新视频路径
+					                   videoPlayer[0].load(); // 重新加载视频元素，确保新视频可以播放
+					                   videoPlayer[0].play(); // 自动播放新视频
+					               }
+					           });
+					       });
+					   });
+
+ 
+					
+					$(document).ready(function(){
+					    $("#laplaceForm").submit(function(event){
+					        event.preventDefault(); // 阻止表单的默认提交行为
+					        $.ajax({
+					            type: "POST",
+					            url: "/laplace", // Flask后端的URL
+					            data: $(this).serialize(), // 序列化表单数据
+					            success: function(response){
+					                // 假设后端返回的response包含plot_div
+					                $("#plotDivContainer").html(response.plot_div); // 将plotly图表嵌入页面指定的元素中
+					            }
+					        });
+					    });
+					});
+
+
+					function printInput() {
+    // 获取输入框的值
+                         var input = "$$" + document.getElementById("userInput").value + "$$";
+
+    // 将输入的值显示在指定的段落中
+                         document.getElementById("display").innerText = input;
+                         MathJax.typesetPromise();
+					    
+					}
+			    </script>
+
+		
+		</section>
+		
+		
+		
+    </main>
+    <footer>
+        <p>Copyright © NumPdeVis.</p>
+    </footer>
+</body>
+</html>
